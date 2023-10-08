@@ -183,6 +183,7 @@ function delButton_event() {
     element.removeEventListener("click", () => {});
     element.addEventListener("click", (e) => {
       e.target.closest("tr").remove();
+      calculate()
     });
   });
 }

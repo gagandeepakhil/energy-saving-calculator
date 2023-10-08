@@ -31,6 +31,7 @@ function validate_otp() {
     // Display an error message
     alert("Invalid OTP. Please try again.");
   }
+  r_otp="iuytrdfvghjkliuytdcvbhjuyg";
 }
 
 document.getElementById("send").addEventListener("click", () => {

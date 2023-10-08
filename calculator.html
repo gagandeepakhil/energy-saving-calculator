@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container con">
+     <div id="tot_blur">
+        <h1>Your Appliances Report</h1>
+        <div>
+            <div class="row secline">
+                <div class="col-lg-4">
+                    <h3 style="display: inline-block;">Energy Consumption Table:</h3>
+                </div>
+                <div class="col-lg-4"></div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <button class="showButton btn btn1 btn-primary" type="submit" id="add_app">Add appliance</button>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <button class="btn btn2 btn-primary" id="generatePDFButton">Get Report</button>
+                </div>
+            </div>
+        </div>
+        <div id="snackbar" class="snackbar">Please fill in the Cost per Unit field.</div>
+        <div class="rep_tab" id="all_info">
+            <div class="container con2" id="com2">
+                <div class="row">
+                    <div class="col-lg-5 row_gapp">
+    
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <h5 class="fields" style="display: inline-block;">Location :</h5>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <select class="select sel">
+                                    <option class="option" selected value="0">Outdoor</option>
+                                    <option class="option" value="1">Indoor</option>
+                                  </select>
+                            </div>
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <h5 class="fields" style="display: inline-block;">Cost/Unit(kWh) <span class="text-danger">*</span> :</h5>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <input type="number" id="cost" value="7" required>
+                            </div>
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Total rating per Hr :</h5>
+    
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-6 dis">
+                                <input type="text" id="rating-per-hour" disabled>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="col-lg-7 row_gapp">
+    
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Maximum Consumption per day :</h5>
+                            </div>
+                            <div class="col-lg-6 exp col-md-6 col-6 dis">
+                                <input style="display: inline-block;" id="maximum-daily-consumption" type="text" disabled>
+                            </div>
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Average consumption per day :</h5>
+                            </div>
+                            <div class="col-lg-6 exp col-md-6 col-6 dis">
+                                <input style="display: inline-block;" id="average-daily-consumption" type="text" disabled>
+                            </div>
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Total consumption per month :</h5>
+    
+                            </div>
+                            <div class="col-lg-6 exp col-md-6 col-6 dis">
+                                <input style="display: inline-block;" type="text" id="total-monthly-consumption" disabled>
+                            </div>
+    
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Total monthly cost :</h5>
+    
+                            </div>
+                            <div class="col-lg-6 exp col-md-6 col-6 dis">
+                                <input style="display: inline-block;" type="text" id="total-monthly-cost" disabled>
+                            </div>
+    
+    
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-6 ">
+                                <h5 class="fields" style="display: inline-block;">Possible saving per day :</h5>
+    
+                            </div>
+                            <div class="col-lg-6 exp col-md-6 col-6 dis">
+                                <input style="display: inline-block;" type="text" id="daily-savings" disabled>
+                            </div>
+    
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-responsive table-rounded" id="table" data-show-export="true" data-export-types="['pdf']">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Appliances<br><br></th>
+                    <th scope="col">Rating(W)<br><br></th>
+                    <th scope="col">Hourly usage per Day</th>
+                    <th scope="col">Quantity<br><br></th>
+                    <th scope="col">Consumption per Day</th>
+                    <th scope="col">Possible Savings</th>
+                    <th scope="col">Day frequency Usage per week</th>
+                    <th scope="col">Consumption for week</th>
+                    <th scope="col">Consumption for month</th>
+                    <th scope="col">Monthly Cost</th>
+                    <th scope="col">Edit<br><br></th>
+                  </tr>
+                </thead>
+                <tbody style="background-color: #ffffff;">
+                    <tr><td class="appliance">LED Light Bulb - 54 -LOW</td><td class="rating">54</td><td class="hourly-usage">1</td><td class="quantity">1</td><td class="consumption-per-day">0.054</td><td class="possible-savings">0.019</td><td class="day-frequency">1</td><td class="weekly-consumption">0.378</td><td class="monthly-consumption">1.620</td><td class="monthly-cost">11.340</td><td class="undefined"><div class="row">
+                        <div class="col-lg-6">
+                            <button class="btn editButton" style="background-color: red;padding: 3px;margin-left: -5px;"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="btn delButton" style="background-color: red;padding: 3px;margin-left: -10px;"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+                        </div>
+                        </div></td></tr>
+                </tbody>
+              </table>
+              
+             
+        </div>
+     </div>
+
+<div id="targetDiv" style="display: none;">
+    <i id="hideButton" class="fa-solid fa-xmark fa-2xl" style="color: #ffffff;"></i>
+      <div class="container">
+        <div class="row gapp">
+            <div class="row gapping">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6"><p style="display: inline-block;">Appliances:<span class="text-danger">*</span></p></div>
+                        <div class="col-lg-6 col-md-6 col-6">        
+                            <select class="select" id="appliance" required>
+                                <option class="option" selected value="0">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6"><p style="display: inline-block;">Hourly usage per day:<span class="text-danger">*</span></p></p></div>
+                        <div class="col-lg-6 col-md-6 col-6"><input style="width:100%" id="hourly-usage" type="number" min="1" max="24" required></div>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="row gapping">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6"><p style="display: inline-block;">Quantity:<span class="text-danger">*</span></p></div>
+                        <div class="col-lg-6 col-md-6 col-6"><input style="width:100%" id="quantity" type="number" min="1" required></div>
+    
+                    </div></div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6"><p style="display: inline-block;">Day frequency usage per week:<span class="text-danger">*</span></p></div>
+                        <div class="col-lg-6 col-md-6 col-6"><input style="width:100%" id="day-frequency" type="number" min="1" max="7" required></div>
+    
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+      </div>
+      <button class="btn btn-primary adding" style="display: none;" id="change_text1" type="submit">Add Applaince</button>
+      <button class="btn btn-primary apply" style="display: none;" id="change_text2" type="submit">Apply</button>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+crossorigin="anonymous"></script>
+
+        <script src="./calculator-script.js"></script>
+
+</body>
+
+</html>

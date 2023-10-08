@@ -144,7 +144,7 @@ table{
 }
 .gapping{
     margin: 3% 0;
-}
+} 
 
 .gapping .col-lg-6 input{
     border-radius: 5px;
@@ -411,12 +411,24 @@ table{
  }
  @media (max-width:376px) and (min-width:327px) {
   
-
+  .row_gapp{
+    padding: 0% !important;
+  }
   .btn2{
       margin-top: 10%;
-      margin-left: 17% !important;
+      margin-left: 13% !important;
+  }
+  .adding{
+    left:29%;
+  }
+  .apply{
+    left:40%;
   }
 
+  #targetDiv{
+    height: 50vh;
+    background-color: #35b8fa
+  }
   
 }
 
@@ -434,10 +446,13 @@ table{
     left: 3%;
     width: 95%;
     height: 60vh;
-    background-color:#00aaff;
+    background-color: #35b8fa;
     border-radius: 20px;
     color: white;
     font-size: 1rem;
+}
+#targetDiv{
+  height: 50vh;
 }
   
 }

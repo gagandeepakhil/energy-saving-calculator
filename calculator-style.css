@@ -3,7 +3,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   /* width: fit-content; */
-  /* height: 100vh; */
+  height: 100vh;
 }
 .con{
   width: 100% !important;
@@ -403,9 +403,11 @@ margin-left: 2%;
 
 .btn2{
     margin-top: 10%;
-    margin-left: 17% !important;
+    margin-left: 11% !important;
 }
-
+.row_gapp{
+  padding: 0% !important;
+  }
 
 }
 

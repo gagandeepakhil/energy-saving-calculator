@@ -2,6 +2,8 @@ var r_otp="iuytrdfvghjkliuytdcvbhjuyg";
 async function send_otp() {
   var mail = document.getElementById("mail").value;
   var name=document.getElementById("name").value
+  if(mail=="")
+  alert("Please enter the mail!!!")
   const url="https://mail-otp-sender.vercel.app?mail=" + mail + "&digit=4"+"&name='"+name+"'"
   alert("Sending otp");
   fetch(url)
@@ -33,11 +35,3 @@ function validate_otp() {
   }
   r_otp="iuytrdfvghjkliuytdcvbhjuyg";
 }
-
-document.getElementById("send").addEventListener("click", () => {
-  //  send_otp();
-});
-
-document.getElementById("verify").addEventListener("click", () => {
-  // validate_otp();
-});

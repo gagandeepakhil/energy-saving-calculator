@@ -109,5 +109,8 @@ body{
   .fields i{
     padding: 2px 8px!important;
   }
+  .fields button{
+    font-size: 13px!important;
+  }
 }
 

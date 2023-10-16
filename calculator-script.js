@@ -7,7 +7,7 @@ const bodyElement2 = document.getElementById("tot_blur");
 var element;
 window.onload=()=>{
   if(sessionStorage.getItem('mail')==null)
-  location.href=window.origin
+  location.href='./index.html'
 }
 window.onunload=()=>{
   sessionStorage.clear()

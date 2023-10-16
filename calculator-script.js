@@ -5,10 +5,14 @@ const change_text1 = document.getElementById("change_text1");
 const change_text2 = document.getElementById("change_text2");
 const bodyElement2 = document.getElementById("tot_blur");
 var element;
-window.onload = () => {
-  console.log(sessionStorage.getItem('mail'));
+window.onload=()=>{
   if(sessionStorage.getItem('mail')==null)
-  window.href="/"
+  location.href=window.origin
+}
+window.onunload=()=>{
+  sessionStorage.clear()
+}
+window.onloadeddata= () => {
   alert("Please enter Cost per Unit");
   calculate();
   document.getElementById("cost").addEventListener("input", () => {
@@ -207,7 +211,7 @@ function generatePDF() {
     jsPDF: { orientation: "landscape" },
   };
   html2pdf().from(containerDiv).set(opt).save();
-
+  sessionStorage.clear()
 }
 
 var bhtml = `<div class="row">

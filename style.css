@@ -99,6 +99,9 @@ body{
   }
 }
 @media (max-width:460px){
+  body{
+    height: 90vh;
+  }
   .inner-container{
     width: 20rem!important;
     font-size: 13px!important;

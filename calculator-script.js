@@ -9,9 +9,6 @@ window.onload=()=>{
   if(sessionStorage.getItem('mail')==null)
   location.href='./index.html'
 }
-window.onunload=()=>{
-  sessionStorage.clear()
-}
 window.onloadeddata= () => {
   alert("Please enter Cost per Unit");
   calculate();

@@ -2,80 +2,259 @@ body{
   background-image: url('./savings.webp');
   background-repeat: no-repeat;
   background-size: cover;
-  width: fit-content;
-  height: 100vh;
+  /* width: fit-content; */
+  /* height: 100vh; */
 }
 .con{
-    width: 100% !important;
-    margin: 2% 2% 2% 6% !important;
+  width: 100% !important;
+  margin: 2% 2% 2% 6% !important;
 }
 .secline{
-    margin-top: 2% !important;
+  margin-top: 2% !important;
 }
 
 .btn2{
-    margin-right: 20% !important;
+  margin-right: 20% !important;
 }
 .btn1{
-    margin-left: 35% !important;
+  margin-left: 35% !important;
 }
 
 .rep_tab{
-    background-color: #d9d9d9;
-    margin-top: 5vh;
-    height: 70vh;
-    overflow-y: scroll;
-    overflow-x: scroll;
-    border-radius: 30px;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  background: rgba(255,255,255,0.3);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.15);
+  margin-top: 5vh;
+  height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 30px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 
 }
 
 .rep_tab::-webkit-scrollbar{
-    display: none;
+  visibility: hidden;
 }
 .rep_tab::-webkit-scrollbar-thumb {
-  display: none;
+/* background-color: transparent; Set scrollbar thumb color to transparent */
+visibility: hidden;
 }
 
 
 .con2{
-    width: 100% !important;
-    margin: 2% 0% 2% 2% !important;
+  width: 100% !important;
+  margin: 2% 2% 2% 6% !important;
 }
 
 .con2 input{
-    border-radius: 5px;
-    padding: 5px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px;
+  /* text-align: center; */
+  /* border-radius: 0 10px 10px 0; */
+  border: none;
+  /* width: 100%; */
+  outline: none;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 
 }
 
 .row_gapp > .row{
-  margin: 2% 0;
-}
-.thead-dark{
-    background-color: #04A5FF;
-    color: white;
-    border-top-left-radius: 10px !important;
-}
-table{
-    width: 95% !important;
-    margin-left: 3%;
+margin: 2% 0;
 }
 
- #targetDiv{
+.thead-dark{
+  background-color: #04A5FF;
+  color: white;
+  border-top-left-radius: 10px !important;
+}
+table{
+  width: 95% !important;
+  margin-left: 3%;
+}
+
+#targetDiv{
+  position: absolute;
+  top:20%;
+  left: 25%;
+  width: 50%;
+  height: 60vh;
+  background-color:#00aaff;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.3rem;
+}
+#targetDiv input{
+border-radius: 5px;
+padding: 5px;
+/* text-align: center; */
+/* border-radius: 0 10px 10px 0; */
+border: none;
+background-color: white;
+/* width: 100%; */
+outline: none;
+box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+
+}
+#hideButton{
+  position: absolute;
+  top:7%;
+  right: 3%;
+  cursor: pointer;
+}
+
+.adding{
+  position: absolute;
+  bottom: 7%;
+  left: 42%;
+  width: fit-content;
+}
+
+.apply{
+  position: absolute;
+  bottom: 7%;
+  left: 45%;
+  width: fit-content;
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.zoom-in {
+  animation: zoomIn 0.5s ease-in-out;
+}
+
+.zoom-out {
+  animation: zoomOut 0.5s ease-in-out;
+}
+
+/* .exp{
+margin-left: 2%;
+} */
+.blur {
+  filter: blur(5px); 
+}
+.gapp{
+  margin-top:9% !important ;
+}
+.gapping{
+  margin: 3% 0;
+}
+
+.gapping .col-lg-6 input{
+  border-radius: 5px;
+  background-color:#43c0ff;
+  border: 2px solid black;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+
+}
+
+
+:root {
+  --arrow-bg: rgba(255, 255, 255, 0.3);
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: #010437;
+  --select-bg:white;
+}
+
+
+.select {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  /* font: inherit; */
+  font-size: 17px;
+  width: 100%;
+  padding: 0.5rem 0rem 0.5rem 0.2rem;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  color: rgb(0, 0, 0);
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  &::-ms-expand {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+
+}
+.sel{
+  width: 82% !important;
+  padding: 0.2rem 0rem 0.2rem 0.2rem;
+  margin-bottom: 10px;
+
+}
+.select .option{
+ 
+      color: white !important;
+      background-color: var(--option-bg) !important;
+    
+}
+.dis input{
+  background-color: #f8f8f8 !important;
+  box-shadow: 0 0 0em 0 rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+@media (max-width:770px) and (min-width:568px) {
+  .rep_tab{
+      overflow-x: scroll;
+      overflow-y: scroll;
+      height: 80vh;
+      border-radius: 10px;
+  }
+  .rep_tab::-webkit-scrollbar{
+    visibility: visible;
+}
+  .btn2{
+      margin-top: 10%;
+      margin-left: 45% !important;
+  }
+  .btn1{
+      margin-top: 10%;
+      margin-left:5% !important;
+  }
+  .sel{
+    width: 62% !important;
+    padding: 0.2rem 0rem 0.2rem 0.2rem;
+    margin-bottom: 10px;
+
+  }
+  .editButton,.delButton{
+    padding: 10% !important;
+    margin: 0% !important;
+    margin-left:-7px !important ;
+    /* margin: 2px !important; */
+  }
+
+  #targetDiv{
     position: absolute;
     top:20%;
-    left: 25%;
-    width: 50%;
+    left: 12%;
+    width: 75%;
     height: 60vh;
     background-color:#00aaff;
     border-radius: 30px;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 #targetDiv input{
   border-radius: 5px;
@@ -86,13 +265,18 @@ table{
   background-color: white;
   /* width: 100%; */
   outline: none;
+  margin: 5% 0;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 
+}
+.gapping{
+  margin: 0% !important;
 }
 #hideButton{
     position: absolute;
     top:7%;
     right: 3%;
+    font-size: 22px;
     cursor: pointer;
 }
 
@@ -109,331 +293,140 @@ table{
     left: 45%;
     width: fit-content;
 }
-@keyframes zoomIn {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
   
-  @keyframes zoomOut {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(0);
-    }
-  }
-  
-  .zoom-in {
-    animation: zoomIn 0.5s ease-in-out;
-  }
-  
-  .zoom-out {
-    animation: zoomOut 0.5s ease-in-out;
-  }
-
-/* .exp{
- margin-left: 2%;
-} */
-.blur {
-    filter: blur(5px); 
-  }
-.gapp{
-    margin-top:9% !important ;
 }
-.gapping{
-    margin: 3% 0;
-} 
-
-.gapping .col-lg-6 input{
-    border-radius: 5px;
-    background-color:#43c0ff;
-    border: 2px solid black;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-
-}
-
-
-:root {
-    --arrow-bg: rgba(255, 255, 255, 0.3);
-    --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
-    --option-bg: #010437;
-    --select-bg:white;
+@media (max-width:568px) {
+  .con{
+      width: 100% !important;
+      margin: 2% 2% 2% 0% !important;
+  }
+  .con2{
+      width: 100% !important;
+      margin: 2% 2% 2% 0% !important;
+  }
+  .fields{
+      font-size: 13px !important;
+  }
+  .col-6 input{
+      width: 97% !important;
   }
 
-
-  .select {
-    appearance: none;
-    border: 0;
-    outline: 0;
-    /* font: inherit; */
-    font-size: 17px;
-    width: 100%;
-    padding: 0.5rem 0rem 0.5rem 0.2rem;
-    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
-    color: rgb(0, 0, 0);
-    border-radius: 0.25em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    &::-ms-expand {
-      display: none;
-    }
-    &:focus {
-      outline: none;
-    }
-
-  }
-.sel{
-    width: 82% !important;
+  .sel{
+    width: 97% !important;
     padding: 0.2rem 0rem 0.2rem 0.2rem;
     margin-bottom: 10px;
+    font-size: 14px;
 
   }
-  .select .option{
-   
-        color: white !important;
-        background-color: var(--option-bg) !important;
+  .editButton,.delButton{
+    padding: 10% !important;
+    margin: 0% !important;
+    margin-left:-7px !important ;
+    /* margin: 2px !important; */
+  }
+  
+  .rep_tab{
+      overflow-x: scroll;
+      height: fit-content;
       
-  }
-  .dis input{
-    background-color: #f8f8f8 !important;
-    box-shadow: 0 0 0em 0 rgba(0, 0, 0, 0.2);
-
-  }
-  
-
-
-  @media (max-width:770px) and (min-width:568px) {
-    .rep_tab{
-        overflow-x: scroll;
-        overflow-y: scroll;
-        height: 80vh;
-        border-radius: 10px;
-    }
-    .rep_tab::-webkit-scrollbar{
-      visibility: visible;
-  }
-    .btn2{
-        margin-top: 10%;
-        margin-left: 45% !important;
-    }
-    .btn1{
-        margin-top: 10%;
-        margin-left:5% !important;
-    }
-    .sel{
-      width: 62% !important;
-      padding: 0.2rem 0rem 0.2rem 0.2rem;
-      margin-bottom: 10px;
-  
-    }
-    .editButton,.delButton{
-      padding: 10% !important;
-      margin: 0% !important;
-      margin-left:-7px !important ;
-      /* margin: 2px !important; */
-    }
-
-    #targetDiv{
-      position: absolute;
-      top:20%;
-      left: 12%;
-      width: 75%;
-      height: 60vh;
-      background-color:#00aaff;
-      border-radius: 30px;
-      color: white;
-      font-size: 1.1rem;
-  }
-  #targetDiv input{
-    border-radius: 5px;
-    padding: 5px;
-    /* text-align: center; */
-    /* border-radius: 0 10px 10px 0; */
-    border: none;
-    background-color: white;
-    /* width: 100%; */
-    outline: none;
-    margin: 5% 0;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-  
-  }
-  .gapping{
-    margin: 0% !important;
-  }
-  #hideButton{
-      position: absolute;
-      top:7%;
-      right: 3%;
-      font-size: 22px;
-      cursor: pointer;
-  }
-  
-  .adding{
-      position: absolute;
-      bottom: 7%;
-      left: 42%;
-      width: fit-content;
-  }
-  
-  .apply{
-      position: absolute;
-      bottom: 7%;
-      left: 45%;
-      width: fit-content;
-  }
-    
- }
- @media (max-width:568px) {
-    .con{
-        width: 100% !important;
-        margin: 2% 2% 2% 0% !important;
-    }
-    .con2{
-        width: 100% !important;
-        margin: 2% 2% 2% 0% !important;
-    }
-    .fields{
-        font-size: 13px !important;
-    }
-    .col-6 input{
-        width: 97% !important;
-    }
-
-    .sel{
-      width: 97% !important;
-      padding: 0.2rem 0rem 0.2rem 0.2rem;
-      margin-bottom: 10px;
-      font-size: 14px;
-  
-    }
-    .editButton,.delButton{
-      padding: 10% !important;
-      margin: 0% !important;
-      margin-left:-7px !important ;
-      /* margin: 2px !important; */
-    }
-    
-    .rep_tab{
-        overflow-x: scroll;
-        height: fit-content;
-        background-color: rgb(173, 173, 173);
-        margin-top: 5vh;
-        height: 70vh;
-        border-radius: 10px;
-    }
-    .btn2{
-        margin-top: 10%;
-        margin-left: 25% !important;
-    }
-    .btn1{
-        margin-top: 10%;
-        margin-left:5% !important;
-    }
-
-    table{
-        font-size: 14px;
-    }
-    
-    #targetDiv{
-      position: absolute;
-      top:20%;
-      left: 7%;
-      width: 85%;
-      height: 60vh;
-      background-color:#00aaff;
-      border-radius: 20px;
-      color: white;
-      font-size: 1rem;
-  }
-  #targetDiv input{
-    border-radius: 5px;
-    padding: 5px;
-    /* text-align: center; */
-    /* border-radius: 0 10px 10px 0; */
-    border: none;
-    background-color: white;
-    /* width: 100%; */
-    outline: none;
-    margin: 5% 0;
-    box-shadow: 0 0 1.5em 0 rgba(0, 0, 0, 0.2);
-  
-  }
-  .gapping{
-    margin: 0% !important;
-  }
-  .gapp{
-    margin-top: 17% !important;
-  }
-  #hideButton{
-      position: absolute;
-      top:7%;
-      right: 3%;
-      font-size: 22px;
-      cursor: pointer;
-  }
-  
-  .adding{
-      position: absolute;
-      bottom: 7%;
-      left: 32%;
-      width: fit-content;
-  }
-  
-  .apply{
-      position: absolute;
-      bottom: 7%;
-      left: 45%;
-      width: fit-content;
-  }
- }
- @media (max-width:376px) and (min-width:327px) {
-  
-  .row_gapp{
-    padding: 0% !important;
+      margin-top: 5vh;
+      height: 70vh;
+      border-radius: 10px;
   }
   .btn2{
       margin-top: 10%;
-      margin-left: 13% !important;
+      margin-left: 25% !important;
   }
-  .adding{
-    left:29%;
-  }
-  .apply{
-    left:40%;
-  }
-
-  #targetDiv{
-    height: 50vh;
-    background-color: #35b8fa
-  }
-  
-}
-
-
-@media (max-width:326px)  {
-  
-
-  .btn2{
+  .btn1{
       margin-top: 10%;
       margin-left:5% !important;
   }
+
+  table{
+      font-size: 14px;
+  }
+  
   #targetDiv{
     position: absolute;
     top:20%;
-    left: 3%;
-    width: 95%;
+    left: 7%;
+    width: 85%;
     height: 60vh;
-    background-color: #35b8fa;
+    background-color:#00aaff;
     border-radius: 20px;
     color: white;
     font-size: 1rem;
 }
-#targetDiv{
-  height: 50vh;
+#targetDiv input{
+  border-radius: 5px;
+  padding: 5px;
+  /* text-align: center; */
+  /* border-radius: 0 10px 10px 0; */
+  border: none;
+  background-color: white;
+  /* width: 100%; */
+  outline: none;
+  margin: 5% 0;
+  box-shadow: 0 0 1.5em 0 rgba(0, 0, 0, 0.2);
+
 }
-  
+.gapping{
+  margin: 0% !important;
+}
+.gapp{
+  margin-top: 17% !important;
+}
+#hideButton{
+    position: absolute;
+    top:7%;
+    right: 3%;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.adding{
+    position: absolute;
+    bottom: 7%;
+    left: 32%;
+    width: fit-content;
+}
+
+.apply{
+    position: absolute;
+    bottom: 7%;
+    left: 45%;
+    width: fit-content;
+}
+}
+@media (max-width:376px) and (min-width:327px) {
+
+
+.btn2{
+    margin-top: 10%;
+    margin-left: 17% !important;
+}
+
+
+}
+
+
+@media (max-width:326px)  {
+
+
+.btn2{
+    margin-top: 10%;
+    margin-left:5% !important;
+}
+#targetDiv{
+  position: absolute;
+  top:20%;
+  left: 3%;
+  width: 95%;
+  height: 60vh;
+  background-color:#00aaff;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+}
+
 }

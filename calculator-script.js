@@ -199,13 +199,14 @@ function generatePDF() {
   var total_monthly_consumption=document.getElementById('total-monthly-consumption').value
   var total_monthly_cost=document.getElementById('total-monthly-cost').value
   var daily_savings=document.getElementById('daily-savings').value
+  var total_rating=document.getElementById('rating-per-hour').value
 
   // Generate a timestamp
   var timestamp = new Date().toLocaleString();
 
   // Define the styling for the report text
   var fontSize = 12;
-  var margin = 10;
+  var margin = 15;
   var watermarkImage = new Image();
   watermarkImage.src = './antar-logo (2).png'; 
 
@@ -218,15 +219,26 @@ function generatePDF() {
   doc.text('Antar IoT',11,9)
   // Add the name to the report
   var name = sessionStorage.getItem('name'); // Replace with the desired name
-  doc.text('Report for: ' + name, margin, margin + timestampTextHeight);
-  doc.text('Report Generated On: ' + timestamp, margin, margin + timestampTextHeight + 10);
-  // doc.text('Maximum daily consumption:'+max_day,margin,margin+30)
-  // doc.text('Average daily consumption:'+avg_day,margin+100,margin+30)
-  // doc.text('Total Monthly consumption:'+total_monthly_consumption,margin,margin+40)
-  // doc.text('Total monthly cost:'+total_monthly_cost,margin+100,margin+40)
-  // doc.text('Daily savings:'+daily_savings,margin,margin+50)
+  doc.setFont('Times-Roman','bold');
+  doc.text('Report for', margin, margin + timestampTextHeight);
+  doc.text('Report Generated On', margin+100, margin + timestampTextHeight );
+  doc.text('Maximum daily consumption',margin,margin+20)
+  doc.text('Average daily consumption',margin+100,margin+20)
+  doc.text('Total Monthly consumption',margin,margin+30)
+  doc.text('Total monthly cost',margin+100,margin+30)
+  doc.text('Daily savings',margin,margin+40)
+  doc.text('Total rating per hour',margin+100,margin+40)
+  doc.setFont('Times-Roman','normal');
+  doc.text(': '+max_day,margin+60,margin+10)
+  doc.text(': '+avg_day,margin+160,margin+10)
+  doc.text(': '+max_day,margin+60,margin+20)
+  doc.text(': '+avg_day,margin+160,margin+20)
+  doc.text(': '+total_monthly_consumption,margin+60,margin+30)
+  doc.text(': '+total_monthly_cost,margin+160,margin+30)
+  doc.text(': '+daily_savings,margin+60,margin+40)
+  doc.text(': '+total_rating,margin+160,margin+40)
   // Calculate the position for the autoTable content
-  var autoTableY = margin + timestampTextHeight + 20; // Adjust the spacing as needed
+  var autoTableY = margin + timestampTextHeight + 50; // Adjust the spacing as needed
 
   // Add the autoTable content
   doc.autoTable({

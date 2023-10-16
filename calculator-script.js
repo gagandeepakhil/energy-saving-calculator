@@ -212,7 +212,7 @@ function generatePDF() {
 
   // Set the font size and margins
   doc.setFontSize(fontSize);
-
+  doc.setFont('Times-Roman','normal');
   // Calculate the height of the timestamp text
   var timestampTextHeight = 10;
   doc.addImage(watermarkImage, 'PNG', 5,5,5,5);
@@ -221,22 +221,22 @@ function generatePDF() {
   var name = sessionStorage.getItem('name'); // Replace with the desired name
   doc.setFont('Times-Roman','bold');
   doc.text('Report for', margin, margin + timestampTextHeight);
-  doc.text('Report Generated On', margin+100, margin + timestampTextHeight );
+  doc.text('Report Generated On', margin+150, margin + timestampTextHeight );
   doc.text('Maximum daily consumption',margin,margin+20)
-  doc.text('Average daily consumption',margin+100,margin+20)
+  doc.text('Average daily consumption',margin+150,margin+20)
   doc.text('Total Monthly consumption',margin,margin+30)
-  doc.text('Total monthly cost',margin+100,margin+30)
+  doc.text('Total monthly cost',margin+150,margin+30)
   doc.text('Daily savings',margin,margin+40)
-  doc.text('Total rating per hour',margin+100,margin+40)
+  doc.text('Total rating per hour',margin+150,margin+40)
   doc.setFont('Times-Roman','normal');
-  doc.text(': '+max_day,margin+60,margin+10)
-  doc.text(': '+avg_day,margin+160,margin+10)
+  doc.text(': '+name,margin+60,margin+10)
+  doc.text(': '+timestamp,margin+210,margin+10)
   doc.text(': '+max_day,margin+60,margin+20)
-  doc.text(': '+avg_day,margin+160,margin+20)
+  doc.text(': '+avg_day,margin+210,margin+20)
   doc.text(': '+total_monthly_consumption,margin+60,margin+30)
-  doc.text(': '+total_monthly_cost,margin+160,margin+30)
+  doc.text(': '+total_monthly_cost,margin+210,margin+30)
   doc.text(': '+daily_savings,margin+60,margin+40)
-  doc.text(': '+total_rating,margin+160,margin+40)
+  doc.text(': '+total_rating,margin+210,margin+40)
   // Calculate the position for the autoTable content
   var autoTableY = margin + timestampTextHeight + 50; // Adjust the spacing as needed
 

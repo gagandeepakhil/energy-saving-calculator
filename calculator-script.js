@@ -8,8 +8,6 @@ var element;
 window.onload=()=>{
   if(sessionStorage.getItem('mail')==null)
   location.href='./index.html'
-}
-window.onloadeddata= () => {
   alert("Please enter Cost per Unit");
   calculate();
   document.getElementById("cost").addEventListener("input", () => {
@@ -46,7 +44,7 @@ window.onloadeddata= () => {
         .getElementsByClassName("day-frequency")[0].innerHTML;
     });
   });
-};
+}
 
 function calculate() {
   var rating = document.getElementsByClassName("rating");
@@ -74,9 +72,6 @@ function calculate() {
     if (maximum_daily_consumption < consumption_per_day[i].innerHTML)
       maximum_daily_consumption = consumption_per_day[i].innerHTML;
   }
-  // for (i = 0; i < consumption_per_day.length; i++) {
-  //   total_daily_consumption += parseFloat(consumption_per_day[i].innerHTML);
-  // }
 
   for (i = 0; i < consumption_per_month.length; i++) {
     total_monthly_consumption += parseFloat(consumption_per_month[i].innerHTML);
@@ -193,22 +188,72 @@ function delButton_event() {
 }
 
 function generatePDF() {
-  var element1 = document.getElementById("com2");
-  var element2 = document.getElementById("table");
+  // sessionStorage.clear()
+  var jsPDF=window.jspdf.jsPDF
+  var doc = new jsPDF('landscape');
 
-  var containerDiv = document.createElement("div");
-  containerDiv.appendChild(element1.cloneNode(true));
-  containerDiv.appendChild(element2.cloneNode(true)); // Clone element1
-  // Clone element1
-  var opt = {
-    margin: 0,
-    filename: "report.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { orientation: "landscape" },
-  };
-  html2pdf().from(containerDiv).set(opt).save();
-  sessionStorage.clear()
+  // Extract the HTML content from the 'all_info' div
+  var content = document.getElementById('table');
+  var max_day=document.getElementById('maximum-daily-consumption').value
+  var avg_day=document.getElementById('average-daily-consumption').value
+  var total_monthly_consumption=document.getElementById('total-monthly-consumption').value
+  var total_monthly_cost=document.getElementById('total-monthly-cost').value
+  var daily_savings=document.getElementById('daily-savings').value
+
+  // Generate a timestamp
+  var timestamp = new Date().toLocaleString();
+
+  // Define the styling for the report text
+  var fontSize = 12;
+  var margin = 10;
+  var watermarkImage = new Image();
+  watermarkImage.src = './antar-logo (2).png'; 
+
+  // Set the font size and margins
+  doc.setFontSize(fontSize);
+
+  // Calculate the height of the timestamp text
+  var timestampTextHeight = 10;
+  doc.addImage(watermarkImage, 'PNG', 5,5,5,5);
+  doc.text('Antar IoT',11,9)
+  // Add the name to the report
+  var name = sessionStorage.getItem('name'); // Replace with the desired name
+  doc.text('Report for: ' + name, margin, margin + timestampTextHeight);
+  doc.text('Report Generated On: ' + timestamp, margin, margin + timestampTextHeight + 10);
+  // doc.text('Maximum daily consumption:'+max_day,margin,margin+30)
+  // doc.text('Average daily consumption:'+avg_day,margin+100,margin+30)
+  // doc.text('Total Monthly consumption:'+total_monthly_consumption,margin,margin+40)
+  // doc.text('Total monthly cost:'+total_monthly_cost,margin+100,margin+40)
+  // doc.text('Daily savings:'+daily_savings,margin,margin+50)
+  // Calculate the position for the autoTable content
+  var autoTableY = margin + timestampTextHeight + 20; // Adjust the spacing as needed
+
+  // Add the autoTable content
+  doc.autoTable({
+      html: content,
+      startY: autoTableY,
+      styles: { fontSize: fontSize },
+      didDrawHeader: function (data) {
+        // Add borders to the table headers
+        doc.rect(data.table.startX, data.table.startY, data.table.contentWidth, data.table.headHeight, 'S');
+    },
+    didDrawCell: function (data) {
+        // Add borders to each cell
+        doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'S');
+    },
+    didDrawRow: function (data) {
+        // Add borders for the entire row (including cells and headers)
+        doc.rect(data.row.x, data.row.y, data.row.width, data.row.height, 'S');
+    }
+  });
+
+  // Add a thank-you message
+  // var thankYouMessage = 'Thank you for using the calculator.';
+  // doc.text(thankYouMessage, margin, doc.internal.pageSize.height - margin);
+
+  // Save the PDF
+  doc.save('report.pdf');
+
 }
 
 var bhtml = `<div class="row">

@@ -29,13 +29,12 @@ async function send_otp() {
 function validate_otp() {
   var otp = document.getElementById("ver-code").value;
   if (r_otp == "iuytrdfvghjkliuytdcvbhjuyg"+otp+"21343546kjfghgjhkjlkhgjhjbkjl5768756453421ysgwjbkgdfbfgdvfsbjdkd") {
-    // Use location.href to navigate to the new page
-    window.location.href = "./calculator.html";
-  } else {
     var mail = document.getElementById("mail").value;
     var name=document.getElementById("name").value;
     sessionStorage.setItem('name',name)
     sessionStorage.setItem('mail',mail)
+    window.location.href = "./calculator.html";
+  } else {
     // Display an error message
     alert("Invalid OTP. Please try again.");
   }

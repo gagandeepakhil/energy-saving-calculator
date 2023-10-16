@@ -6,6 +6,9 @@ const change_text2 = document.getElementById("change_text2");
 const bodyElement2 = document.getElementById("tot_blur");
 var element;
 window.onload = () => {
+  console.log(sessionStorage.getItem('mail'));
+  if(sessionStorage.getItem('mail')==null)
+  window.href="/"
   alert("Please enter Cost per Unit");
   calculate();
   document.getElementById("cost").addEventListener("input", () => {

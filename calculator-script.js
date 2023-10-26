@@ -260,8 +260,14 @@ function generatePDF() {
   });
 
   // Add a thank-you message
-  // var thankYouMessage = 'Thank you for using the calculator.';
-  // doc.text(thankYouMessage, margin, doc.internal.pageSize.height - margin);
+  var thankYouMessage = "Enjoy a remarkable";
+  doc.text(thankYouMessage, margin, doc.internal.pageSize.height - margin);
+  doc.setTextColor(30, 212, 6);
+  doc.setFont('Times-Roman','bold');
+  doc.text("35%",margin+34, doc.internal.pageSize.height - margin)
+  doc.setFont('Times-Roman','normal');
+  doc.setTextColor(0,0,0);
+  doc.text(" in savings, all thanks to Antar IoT's powerful automation solutions.",margin+42, doc.internal.pageSize.height - margin)
 
   // Save the PDF
   doc.save('report.pdf');
